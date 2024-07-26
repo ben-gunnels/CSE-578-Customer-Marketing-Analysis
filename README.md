@@ -14,9 +14,11 @@ To get started, clone this repository and install the required dependencies.
 
 bash
 Copy code
-```git clone https://github.com/yourusername/data-analysis-project.git
+```
+git clone https://github.com/yourusername/data-analysis-project.git
 cd data-analysis-project
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
 
 ## Usage
 Prepare Data: Place your dataset in the data/ directory.
@@ -25,7 +27,9 @@ Run Analysis: Execute the analysis script:
 
 bash
 Copy code
+```
 python analysis.py
+```
 View Results: Check the results/ directory for output files and visualizations.
 
 ## Data
