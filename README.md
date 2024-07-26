@@ -3,20 +3,20 @@
 This project involves analyzing the relationship between biographical attributes and salary. The goal is to present UVW with compelling analysis that it can use to inform its recruitment decisions and advise its potential students.
 
 ## Table of Contents
-Installation
-Usage
-Data
-Results
-License
+* Installation
+* Usage
+* Data
+* Results
+* License
 
 ## Installation
 To get started, clone this repository and install the required dependencies.
 
 bash
 Copy code
-git clone https://github.com/yourusername/data-analysis-project.git
+```git clone https://github.com/yourusername/data-analysis-project.git
 cd data-analysis-project
-pip install -r requirements.txt
+pip install -r requirements.txt```
 
 ## Usage
 Prepare Data: Place your dataset in the data/ directory.
