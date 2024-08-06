@@ -297,3 +297,10 @@ def main():
 
   # Plot race by salary outcomes
   race_salary()
+
+  # Plot salary by occupation race and education
+  occupation_race_education_salary()
+
+  # Categorical plot for occupation, race, education and salary
+  occupation_race_education_salary_catplot()
+
