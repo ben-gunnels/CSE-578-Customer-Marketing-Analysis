@@ -263,6 +263,61 @@ def occupation_race_education_salary_catplot():
   g.fig.suptitle('Proportion of Income Levels by Occupation, Race, and Education (College vs Non-College)', fontsize=24)
   plt.show()
 
+def relation_education_num_salary():
+    newdata = data.copy()
+    column = "relationship"
+    filtercolumn = "education-num"
+        
+    Q1 = newdata[filtercolumn].quantile(0.25)
+    Q3 = newdata[filtercolumn].quantile(0.75)
+    # Compute IQR
+    IQR = Q3 - Q1
+    # Determine the lower and upper bounds for outliers
+    lower_bound = Q1 - 1.5 * IQR
+    upper_bound = Q3 + 1.5 * IQR
+    # Find outliers
+    newdata = newdata[(newdata[filtercolumn] >= lower_bound) & (newdata[filtercolumn] <= upper_bound)]
+
+    print(filtercolumn, " range is:", lower_bound, upper_bound)
+
+    #print(f"unfilter---> {column} :\n {data[column].value_counts()}")
+    #print(f"FilteredData---> {column} :\n {newdata[column].value_counts()}")
+    
+    plt.figure(figsize=(8, 4))
+    sns.histplot(newdata, x=column, hue='salary', multiple='stack')
+    plt.title(f'Bar Chart of {column}')
+    plt.xlabel(column)
+    plt.ylabel('Frequency')
+    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability if needed
+    plt.show()
+    
+    plt.figure(figsize=(8, 4))
+    sns.histplot(newdata, x=filtercolumn, hue='salary', multiple='stack')
+    plt.title(f'Bar Chart of {filtercolumn}')
+    plt.xlabel(column)
+    plt.ylabel('Frequency')
+    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability if needed
+    plt.show()
+  
+    def relationship(value):
+        if value in [" Husband", " Wife"]:
+            return "Husband+Wife"
+        else:
+            return "Other"
+        
+    def education_level(value):
+        if value < 9:
+            return "Basic"
+        elif 9 <= value < 13:
+            return "Qualified"
+        elif 13 <= value:
+            return "Highly Qualified"
+
+    newdata['education-level'] = newdata['education-num'].map(education_level)
+    newdata['relationship-level'] = newdata['relationship'].map(relationship)
+
+    fig = px.parallel_categories(newdata, dimensions=['relationship-level', 'education-level', 'salary'])
+    fig.show()
 
 def main():
   # Plot age distribution according to salary outcomes
@@ -303,4 +358,7 @@ def main():
 
   # Categorical plot for occupation, race, education and salary
   occupation_race_education_salary_catplot()
+
+  # Plots for education, relation and salary
+  relation_education_num_salary()
 
