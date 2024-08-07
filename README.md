@@ -1,7 +1,7 @@
 ﻿# CSE-578-Customer-Marketing-Analysis
 ## Overview
 This project involves analyzing the relationship between biographical attributes and salary. The goal is to present UVW with compelling analysis that it can use to inform its recruitment decisions and advise its potential students.
-
+It is a combination of uni and multi-variate analyses to uncover the patterns and relationships in the data. 
 ## Table of Contents
 * Installation
 * Usage
