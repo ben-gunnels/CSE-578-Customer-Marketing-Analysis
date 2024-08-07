@@ -33,14 +33,27 @@ python analysis.py
 View Results: Check the results/ directory for output files and visualizations.
 
 ## Data
-Dataset: [Brief description of the dataset, e.g., "Sales data from 2023"]
-Source: [Where the data comes from, if applicable]
-Format: [File format, e.g., CSV, Excel]
-## Results
-The analysis generates the following results:
+Dataset: The data has been extracted by UCI from a US Census Bureau database. The data contains 14 columns of various demographic attributes. 
 
-[Description of the key results, e.g., "A summary of sales trends and key performance indicators"]
-Visualizations and additional findings can be found in the results/ directory.
+Source: [Census Bureau Data]([http://www.census.gov/ftp/pub/DES/www/welcome.html](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.data))
+
+Column Description: [UCI Adult Database](https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.names)
+
+Format: CSV
+
+## Results
+The analysis generates, but is not limited to, the following results:
+![age salary](https://github.com/user-attachments/assets/f6059da7-d96b-4910-84e4-599f032268e4)
+
+![education salary](https://github.com/user-attachments/assets/dd6b55ee-f87d-4224-84a8-b6efd1eb9169)
+
+![marital salary](https://github.com/user-attachments/assets/d96590ae-d344-437d-85a0-ea19242cc910)
+
+![marital age salary](https://github.com/user-attachments/assets/5ebc6421-e7ef-4fc6-9f50-6a8da7b472cd)
+
+![relationships salary](https://github.com/user-attachments/assets/5f99b293-5ab5-4837-b08f-829a119cc7b7)
+
+![occupation salary](https://github.com/user-attachments/assets/bff0320d-0844-4393-873f-9e32bca84844)
 
 ## License
-This project is licensed under the [License Name] License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
