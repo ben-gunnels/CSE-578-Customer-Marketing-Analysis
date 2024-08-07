@@ -15,8 +15,8 @@ To get started, clone this repository and install the required dependencies.
 bash
 Copy code
 ```
-git clone https://github.com/yourusername/data-analysis-project.git
-cd data-analysis-project
+git clone [https://github.com/yourusername/data-analysis-project.git](https://github.com/ben-gunnels/CSE-578-Customer-Marketing-Analysis/tree/main)
+cd CSE-578-Customer-Marketing-Analysis
 pip install -r requirements.txt
 ```
 
