@@ -319,6 +319,82 @@ def relation_education_num_salary():
     fig = px.parallel_categories(newdata, dimensions=['relationship-level', 'education-level', 'salary'])
     fig.show()
 
+def education_level_United_States():
+  usa_data = data[data['native-country'] == 'United States of America']
+  data['combined'] = data['sex'] + ' with ' + data['salary']
+  grouped_data = usa_data.groupby(['education', 'combined']).size().reset_index(name='Count')
+  plt.figure(figsize=(12, 8))
+  sns.lineplot(x='education', y='Count', hue='combined', data=grouped_data, palette='viridis')
+  
+  # Adding titles and labels
+  plt.title('Number of People by Education Level, Salary Category, and Gender in United States of America')
+  plt.xlabel('Education Level')
+  plt.ylabel('Number of People')
+  
+  # Rotate x-axis labels for better readability
+  plt.xticks(rotation=45)
+  
+  plt.legend(title='Sex and Salary')
+  plt.tight_layout()
+  
+  # Show plot
+  plt.show()
+
+def salary_native_country_choropleth():
+  categorical_attributes = ["workclass", "education", "marital-status", "occupation", "relationship", "race", "sex", "native-country"] # These attributes are categorical data
+  world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+
+  name_mapping = {
+      'United-States': 'United States of America',
+      'Russia': 'Russian Federation',
+      'Bolivia': 'Bolivia (Plurinational State of)',
+      'Vietnam': 'Viet Nam',
+  }
+  
+  data['native-country'] = data['native-country'].replace(name_mapping)
+  
+  filtered_data = data[data['salary'] == '>50K']
+  
+  aggregated_data = filtered_data.groupby('native-country')['salary'].count().reset_index()
+  
+  merged_data = world.merge(aggregated_data, how='left', left_on='name', right_on='native-country')
+  
+  merged_data['salary'] = merged_data['salary'].fillna(0)
+  
+  country_to_exclude = 'United States of America'
+  
+  exclude_df = merged_data[merged_data['name'] == country_to_exclude]
+  
+  excluded_data = merged_data[merged_data['name'] != country_to_exclude]
+  
+  added_data = excluded_data.groupby('name').sum()
+  
+  exclude_df['salary'] = 0
+  combined_data = pd.concat([excluded_data, exclude_df])
+
+  def create_choropleth(data, column, title, cmap='OrRd'):
+    fig, ax = plt.subplots(1, 1, figsize=(15, 10))
+    data.plot(column=column, 
+              cmap=cmap, 
+              linewidth=0.8, 
+              ax=ax, 
+              edgecolor='0.8')
+    vmin = data[column].min()
+    vmax = data[column].max()
+    bins = np.linspace(vmin, vmax, 5)  # Adjust the number of bins as needed
+    labels = [f'{int(bins[i])} - {int(bins[i+1])}' for i in range(len(bins)-1)]
+    
+    cmap = plt.get_cmap(cmap)
+    norm = plt.Normalize(vmin, vmax)
+    patches = [mpatches.Patch(color=cmap(norm((bins[i] + bins[i + 1]) / 2)), label=labels[i]) for i in range(len(labels))]
+    
+    ax.legend(handles=patches, loc='center left', bbox_to_anchor=(1, 0.5), title='Legend Title', fontsize='small')
+    plt.title(title)
+    plt.show()
+    
+  create_choropleth(merged_data, 'salary', 'People earning more than 50K in the world')
+  create_choropleth(combined_data, 'salary', 'People earning more than 50K excluding USA')
+
 def main():
   # Plot age distribution according to salary outcomes
   age_salary()
@@ -361,4 +437,14 @@ def main():
 
   # Plots for education, relation and salary
   relation_education_num_salary()
+
+  # Plot the education level distribution for the United States
+  education_level_United_States()
+
+  # Plot the choropleth map for salary by native country
+  salary_native_country_choropleth()
+
+
+if __name__ == "__main__":
+  main()
 
