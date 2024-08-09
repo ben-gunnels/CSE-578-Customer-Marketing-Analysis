@@ -51,6 +51,8 @@ The analysis generates, but is not limited to, the following results:
 
 ![marital age salary](https://github.com/user-attachments/assets/5ebc6421-e7ef-4fc6-9f50-6a8da7b472cd)
 
+![marital-gender-salary-catplot](https://github.com/user-attachments/assets/ff6075a1-8293-468a-adb6-7f328c454ec0)
+
 ![relationships salary](https://github.com/user-attachments/assets/5f99b293-5ab5-4837-b08f-829a119cc7b7)
 
 ![occupation salary](https://github.com/user-attachments/assets/bff0320d-0844-4393-873f-9e32bca84844)
