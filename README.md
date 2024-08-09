@@ -55,5 +55,15 @@ The analysis generates, but is not limited to, the following results:
 
 ![occupation salary](https://github.com/user-attachments/assets/bff0320d-0844-4393-873f-9e32bca84844)
 
+![BarEducation_withoutlier](https://github.com/user-attachments/assets/9c56683e-405a-4e62-9b61-2a1400536b84)
+
+![BarRelation](https://github.com/user-attachments/assets/2e76c84d-2dc7-4f7f-a6ce-091d44ac48cf)
+
+![Choropleth](https://github.com/user-attachments/assets/eec65550-8d08-45c0-86a5-79a0025c58b7)
+
+![ChoroplethwithoutUSA](https://github.com/user-attachments/assets/5762479e-402f-4df4-a6ee-b085d752d530)
+
+![LineGraph_Education_Sex_in_USA](https://github.com/user-attachments/assets/de42aea3-586b-4ade-98f6-f5b00c2b6338)
+
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
